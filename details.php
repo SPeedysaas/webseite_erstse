@@ -48,7 +48,7 @@ $conn->close();
 ?>
 <a href="index.php" class="home">Home</a>
 
-<div>
+<div class="download">
 <a href="<?= htmlspecialchars($filepath) ?>" class="hochlad">DOWNLOAD</a>
 <label>Download File: <?=htmlspecialchars($name)?></label>
 </div>

@@ -121,6 +121,10 @@ label{
   
 
 }
+.buttonons form{
+  display: flex;
+  flex-direction: column;
+}
 
 .userlogin{
   display: block;
@@ -153,4 +157,13 @@ label{
   align-items: center;
   text-decoration: none;
 
+}
+.home{
+  display: flex;
+}
+.download{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
