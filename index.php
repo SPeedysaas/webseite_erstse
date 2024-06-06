@@ -68,9 +68,11 @@
 <body>
 
 <?php if (!$eingelogged) {?>
-<a href="register.php" class="register">Du kannst dich hier regestrieren</a>
+
 
 <div class="login">
+<div class="unterdiv">
+<a href="register.php" class="register">Du kannst dich hier regestrieren</a>
 
 <form method="post">
 <label for="username">Username: </label>
@@ -84,6 +86,7 @@
 
 <button>Fertig</button>
 </form>
+</div>
 </div>
 
 <?php } else{?>

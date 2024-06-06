@@ -99,17 +99,22 @@ label{
 }
 .login{
   display: flex;
-  align-content: center;
   justify-content: center;
+  
+
+}
+
+.login div {
+  display: flex;
+  align-items: center
 }
 
 
 .buttonons{
   display: flex;
-
   align-content: center;
   flex-direction: column;
-  height: 100vh;
+  flex-grow: 1;
   width: 100vw;
   align-items: center;
   justify-content: center;
@@ -120,4 +125,32 @@ label{
 .userlogin{
   display: block;
   text-align: center;
+}
+.register{ 
+  display: flex;
+
+  border: 0;
+  line-height: 2.5;
+  margin: auto;
+  padding: 0 20px;
+  font-size: calc((2vh + 2vw)/2);
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgb(68, 241, 0);
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
 }
