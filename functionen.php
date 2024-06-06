@@ -124,12 +124,40 @@ function adduser($user,$pass){
 
 }
 function checkacsess(){
-    
+$newid = $_GET["id"];
+$conn = new mysqli("localhost", "root", "", "SaschaProject");    
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}   
+$sql = "SELECT * FROM dateien WHERE id=? ";
+$statement = $conn->prepare($sql);
+$statement->bind_param("i",$newid);
+$statement->execute();
+$result = $statement->get_result();
+if ($result !== false) {
+    $row = $result->fetch_row();
+    $name = $row[1];
+    $user = $row[2];
+    $acsess = $row[3];
+
+    $filepath  = "uploads/".$name;
+    if ($acsess != "open"){
+        list($nutzer, $einglogged) = checkcookie();
+        if (!isset($nutzer)){
+            header("Location: index.php");
+            exit();
+        }
+        else{
+            return [$name,$user,$filepath,$acsess,$newid];
+        }
+    }
+    else{
+        return [$name,$user,$filepath,$acsess,$newid];
+    }
 
 }
-
-
-
-
-
+else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+}
 ?>
