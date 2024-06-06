@@ -167,3 +167,13 @@ label{
   justify-content: center;
   flex-direction: column;
 }
+
+table{
+  text-align: center;
+}
+th{
+  border: 1px solid;
+}
+td{
+  border: 1px solid;
+}
