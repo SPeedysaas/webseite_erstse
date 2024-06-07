@@ -84,7 +84,7 @@ function backtobase(){
 }
 function connectmysql(){
     $env = parse_ini_file(".env");
-    $conn = new mysqli("localhost", "root", "", "SaschaProject");
+    $conn = new mysqli($env["MYSQL_HOST"], $env["MYSQL_USER"],$env["MYSQL_PASSWORD"],$env["MYSQL_DATABASE"]);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
