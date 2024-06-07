@@ -28,4 +28,10 @@ Login auf der webseite: username : admin, passwort : admin
 ## Info:
 Dies ist meine erste Website, die programiert wurde während des Praktikum der 10. Klasse einer Weberstellungs Frima. 
 
+## Probleme behebung:
+Wenn der upload von dateien auf der Webseite wegen fehlenden Rechte für den uploads Ordner nicht funktioniert, nutze folgenden befehl 
+```
+chmod a+rw uploads 
+```  
+
 
