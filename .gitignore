@@ -1,4 +1,4 @@
 .env
 uploads/*
 .DS_Store
-!uploads/.keepme
+!uploads/.htaccess
