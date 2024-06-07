@@ -1,3 +1,4 @@
 .env
-uploads
+uploads/*
 .DS_Store
+!uploads/.keepme
