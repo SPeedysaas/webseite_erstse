@@ -41,10 +41,7 @@
 
 
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-        $conn = new mysqli("localhost", "root", "", "SaschaProject");    
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }   
+        $conn = connectmysql();
         $sql = "INSERT INTO dateien(name,username,acsess) VALUES ('$read','$usercookie','$acsess');";
         $result = $conn->query($sql);
         

@@ -16,12 +16,9 @@ return [$nutzer, $eingelogged];
 function checkuser($user, $pass) {
 
 
-    $connuser = new mysqli("localhost", "root", "", "SaschaProject");
-    if ($connuser->connect_error) {
-        die("Connection failed: " . $connuser->connect_error);
-    }   
+    $conn = connectmysql();
     $sql = "SELECT EXISTS(SELECT * FROM user WHERE username = '$user' AND password = '$pass')";
-    $resultuser = $connuser->query($sql);
+    $resultuser = $conn->query($sql);
     
     
     if ($resultuser !== false){
@@ -42,7 +39,7 @@ function checkuser($user, $pass) {
 }
 }
 else {
-echo "Error: " . $sql . "<br>" . $connuser->error;
+echo "Error: " . $sql . "<br>" . $conn->error;
 
 }
 }
@@ -85,13 +82,17 @@ function backtobase(){
     
 
 }
+function connectmysql(){
+    $conn = new mysqli("localhost", "root", "", "SaschaProject");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    return $conn;
+}
 function checkinfo($user){
-    $connuser = new mysqli("localhost", "root", "", "SaschaProject");
-    if ($connuser->connect_error) {
-        die("Connection failed: " . $connuser->connect_error);
-    }   
+    $conn = connectmysql();
 
-    $stmt = $connuser->prepare("SELECT * FROM user WHERE username = ?");
+    $stmt = $conn->prepare("SELECT * FROM user WHERE username = ?");
     $stmt->bind_param("s", $user);
     $stmt->execute();
     $stmt->store_result();
@@ -105,12 +106,9 @@ function checkinfo($user){
     return $original;
 }
 function adduser($user,$pass){
-    $connuser = new mysqli("localhost", "root", "", "SaschaProject");
-    if ($connuser->connect_error) {
-        die("Connection failed: " . $connuser->connect_error);
-    }   
+    $conn = connectmysql();
     $sql = "INSERT INTO user(username,password) VALUES('$user','$pass')";
-    $resultuser = $connuser->query($sql);
+    $resultuser = $conn->query($sql);
     if ($resultuser !== false){
     setcookie("username", $user);
     setcookie("password", $pass);
@@ -118,17 +116,14 @@ function adduser($user,$pass){
     
     }
     else {
-    echo "Error: " . $sql . "<br>" . $connuser->error;
+    echo "Error: " . $sql . "<br>" . $conn->error;
     
     }
 
 }
 function checkacsess(){
 $newid = $_GET["id"];
-$conn = new mysqli("localhost", "root", "", "SaschaProject");    
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}   
+$conn = connectmysql();
 $sql = "SELECT * FROM dateien WHERE id=? ";
 $statement = $conn->prepare($sql);
 $statement->bind_param("i",$newid);
